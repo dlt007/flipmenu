@@ -1,0 +1,498 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Centered Testimonials Slider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro&family=Playfair+Display:ital@0;1&display=swap"
+    rel="stylesheet">
+
+
+
+<style>
+  /* Reset & Body */
+  body {
+    background: #ffffff00;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Container */
+  .section {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  /* Header */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+
+  .section-header h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    font-weight: 400;
+    font-style: normal;
+    font-optical-sizing: auto;
+    color: #174b3d;
+  }
+
+  /* Slider Controls */
+  .slider-controls {
+    display: flex;
+    gap: 20px;
+  }
+
+  .slider-button {
+    width: 48px;
+    height: 48px;
+    border: 2px solid #174b3d;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slider-button:hover {
+    background-color: #174b3d;
+  }
+
+  .slider-button svg {
+    width: 24px;
+    height: 24px;
+    color: #174b3d;
+  }
+
+  .slider-button:hover svg {
+    color: white;
+  }
+
+  /* Slider Wrapper & Container */
+  .slider-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .slider-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 20px;
+    scroll-behavior: smooth;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+  }
+
+  /* Slide */
+  .slide {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    flex: 0 0 80%;
+    max-width: 60%;
+    padding: 20px;
+    box-sizing: border-box;
+
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+
+    scroll-snap-align: center;
+    height: 350px;
+  }
+
+  .slide:hover {
+    border-color: #174b3d;
+  }
+
+  /* Stars */
+  .stars {
+    color: #99824b;
+    margin-bottom: 20px;
+  }
+
+  /* Slide Paragraph */
+  .slide p {
+    color: #174b3d;
+    margin-bottom: 20px;
+    height: 200px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+    background: #ffffff;
+    text-align: justify;
+  }
+
+  /* Author */
+  .author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author img,
+  .boximage {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .boximage {
+    background-color: #174b3d;
+    color: white;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .author-name {
+    font-weight: 600;
+    color: #174b3d;
+  }
+
+  .author-title {
+    font-size: 14px;
+    color: #174b3d;
+  }
+
+  /* Slide Link */
+  .slide-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Responsive */
+  @media (min-width: 1024px) {
+    .slide {
+      flex: 0 0 40%;
+      max-width: 40%;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .slide {
+      flex: 0 0 90%;
+      max-width: 100%;
+    }
+
+    .slider-button {
+      width: 30px;
+      height: 30px;
+    }
+
+    .section-header h2 {
+      font-size: 25px;
+    }
+  }
+</style>
+
+
+
+</head>
+
+<body>
+  <section class="section">
+    <div class="section-header">
+      <h2>Testimonials</h2>
+      <div class="slider-controls">
+        <button class="slider-button" onclick="scrollSlider(-1)">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+        <button class="slider-button" onclick="scrollSlider(1)">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="slider-wrapper">
+      <div class="slider-container" id="testimonialSlider">
+        <div class="slide">
+          <div class="stars">Tripadvisor ⬤ ⬤ ⬤ ⬤ ⬤ </div>
+          <p>
+            <b> Hotel maravilhoso </b> <br>
+            Os funcionários são muito atenciosos, o hotel é maravilhoso com quartos espaçosos e bem localizado. 
+            O quarto é limpo,   chuveiro é maravilhoso e tem também uma banheira. 
+            Fica perto do night market porém eles oferecem carona até lá tanto pra ir quanto pra voltar. Com certeza ficaria novamente nesse hotel. 
+
+
+          </p>
+          <div class="author">
+            <img src="https://static.wixstatic.com/media/a14c8a_33b4984431124e369baef35812538639~mv2.jpg" alt="avatar">
+            <div>
+              <div class="author-name">Cindy</div>
+              <div class="author-title">from Okinawa Prefecture, Japan </div>
+            </div>
+          </div>
+        </div>
+        <!-- เพิ่มอีกตามต้องการ 2 -->
+        <div class="slide">
+          <div class="stars">Tripadvisor ⬤ ⬤ ⬤ ⬤ ⬤</div>
+          <p>
+            <b>Exceptional stay in MyBanLao</b> <br>
+            I have been coming back to beautiful Luang Prabang and never fails to stay at MyBanLao Hotel. Exceptional
+            service and facilities! It is one establishment that is constantly improving to provide guests with a more
+            enjoyable and comfortable stay. They even provide electric car/ bike rentals for you to get around town or
+            out to tourist attraction sites.
+
+
+          </p>
+          <div class="author">
+            <img src="https://static.wixstatic.com/media/a14c8a_fd2c37de475a478d816ca988c7d59d16~mv2.jpg" alt="avatar">
+            <div>
+              <div class="author-name">David Cheah </div>
+              <div class="author-title">from Singapore, Singapore</div>
+            </div>
+          </div>
+        </div>
+        <!-- เพิ่มอีกตามต้องการ 3 -->
+        <div class="slide">
+          <div class="stars">Tripadvisor ⬤ ⬤ ⬤ ⬤ ⬤</div>
+          <p>
+            <b>Exceptional experience </b> <br>
+            Staff were excellent, nice rooms, great atmosphere. Free shuttle to take you into the main city area, too.
+            Breakfast was also easy above average in taste and quality. Feels like a lot of details were thoughtfully
+            considered in providing for an exceptional stay.
+
+          </p>
+          <div class="author">
+            <img src="https://static.wixstatic.com/media/a14c8a_7b9c03e5341749208d1d6521692e98d3~mv2.jpg" alt="avatar">
+            <div>
+              <div class="author-name"> Casey T </div>
+              <div class="author-title">from Vientiane, Laos</div>
+            </div>
+          </div>
+        </div>
+        <!-- เพิ่มอีกตามต้องการ -->
+        <div class="slide">
+          <div class="stars">Agoda 10.0 Exceptional</div>
+          <p>
+            <b>“Exceptional stay”</b> <br>
+            We had a wonderful two-night stay at MyBanLao, and it ranks among the best experiences we've had in
+            Southeast Asia—having traveled to over 95 countries. The staff took exceptional care of us, from our
+            check-in to our departure. We stayed in a courtyard room that featured an open shower and bathroom concept,
+            a free mini bar stocked with soft drinks, strong hot water, effective air conditioning, reliable WiFi, and a
+            good selection of English channels. Typically, we don't make much use of hotel amenities, but everything at
+            this hotel made it easy and enjoyable to do so. We especially enjoyed the spa treatments, including a great
+            full-body massage for $20 (60 minutes), as well as complimentary access to the steam room and jacuzzi. The
+            happy hour by the pool, the free shuttle to town, the EV rental for $40 (10 hours), and the free airport
+            transfer—which was the most comfortable we experienced during our six days in Laos—were also fantastic. We
+            even took a sunset dinner cruise with River Sun Laos for $45. Overall, everything felt seamless and
+            luxurious during our stay.
+
+
+          </p>
+          <div class="author">
+            <div class="boximage">
+              C
+            </div>
+            <div>
+              <div class="author-name">Cindy</div>
+              <div class="author-title"> from United States</div>
+            </div>
+          </div>
+        </div>
+        <!-- เพิ่มอีกตามต้องการ -->
+        <div class="slide">
+          <div class="stars">Agoda 9.6 Exceptional </div>
+          <p>
+            <b>“Excellent ”</b> <br>
+            Amazing hotel with amazing staff. There was no aspect of my stay that wasn't exceptional. The facilities are
+            immaculate with plenty to keep you occupied - whether you want to unwind by the beautiful pool, relax at the
+            spa or even explore the turtle rehab centre. The hotel's location makes most things very walkable but, if
+            you're not up to it, there is a complementary shuttle service to get you to the city centre and back. They
+            will also provide transfers to/from the airport or train station. The courtyard suite (which I was upgraded
+            to) was large, extremely comfortable, and clean. Everything felt state of the art. The staff was always very
+            attentive and responsive. They're able to arrange excursions or point you in the direction you need to go.
+            Food at the restaurant was great as well, and service at the spa was excellent.
+
+
+          </p>
+          <div class="author">
+            <div class="boximage">
+              B
+            </div>
+            <div>
+              <div class="author-name">Brooke </div>
+              <div class="author-title">from Thailand</div>
+            </div>
+          </div>
+        </div>
+        <!-- เพิ่มอีกตามต้องการ -->
+        <div class="slide">
+          <div class="stars">Agoda 9.6 Exceptional</div>
+          <p>
+            <b> “The best in town ” </b> <br>
+            This hotel, located in a beautiful colonial building, just has the wow factor. The staff is excellent, the
+            service superb, the rooms large and comfortable, the pool magnificent. The only minor complaint is the poor
+            cardio equipment at the gym. Would 100% recommend.
+
+
+
+          </p>
+          <div class="author">
+            <div class="boximage">
+              O
+            </div>
+            <div>
+              <div class="author-name">Olivia</div>
+              <div class="author-title">from Switzerland</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- เพิ่มอีกตามต้องการ -->
+        <div class="slide">
+          <div class="stars">Trip.com 10/10 Outstanding </div>
+          <p>
+            Not much to say, which is rather positive. As advertised. The location was convenient without being crowded. The hotel itself was charming and relaxing. The restaurant offered a good mix of options with a wide range of affordable local dishes and some western alternatives. Both were good choices. The cleaning staff were efficient. And the service was great. There was always someone available to help, happily. The spa was surprisingly cheap for an in-house spa, but still maintained standards across the board. The shuttle, which never required any waiting time, was useful. I guess there was a bit to say, all positive. Would comfortably recommend.
+
+
+
+          </p>
+          <div class="author">
+            <div class="boximage">
+              A
+            </div>
+            <div>
+              <div class="author-name">A‍n‍d‍r‍e‍a‍s‍ ‍K‍a‍r‍l</div>
+              <div class="author-title"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- เพิ่มอีกตามต้องการ -->
+        <div class="slide">
+          <div class="stars">Trip.com 10/10 Amazing
+          </div>
+          <p>
+            I love everything about this hotel. I actually booked it at the very last minute as I had to cancelled the other hotel due to incorrect date. Room was so spacious, very clean, and the breakfast spread was not bad too. If you are vegetarian, you may ask them to make new ones if they have it. Pool was really great, staff was extremely helpful & friendly. Do not worry if the location is just a bit out of the centre, they have free shuttle services & pick up too. The spa massage was amazing too. And i love that they also provide free shuttle to train station or airport if you stay 2 nights. Do not hesitate to book this hotel!
+
+
+
+
+          </p>
+          <div class="author">
+            <div class="boximage">
+              S
+            </div>
+            <div>
+              <div class="author-name">S‍y‍a‍i‍d‍a‍t‍i‍n‍a‍ ‍A‍f‍i‍q‍a‍h‍ ‍</div>
+              <div class="author-title"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- เพิ่มอีกตามต้องการ -->
+        <div class="slide">
+          <div class="stars">Google 5/5</div>
+          <p>
+            What a great value hotel! The staff was friendly, always smiling and so helpful. We chose the hotel for its beautiful pool and it didn't disappoint. The bedrooms and the resort throughout is very clean. Spacious bedrooms and comfy beds. Breakfast was good. They have a driver that will take you to the centre easily and whenever you want. They also have EV car rentable for half or full day, which we used to go to the waterfalls. This felt like a very special hotel at such a very low/affordable price.
+            <br><b>Rooms</b> 5.0 <b>Service</b> 5.0 <b>Location</b> 5.0 <br>
+            <b>Hotel highlights</b> Luxury · Quiet · Great value
+
+
+           
+          <div class="author">
+            <img src="https://static.wixstatic.com/media/a14c8a_739a7670e49349c890fb6329e7cd4d79~mv2.png" alt="avatar">
+            <div>
+              <div class="author-name">Ben Rosar</div>
+              <div class="author-title"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- เพิ่มอีกตามต้องการ -->
+        <div class="slide">
+          <div class="stars">Google 5/5</div>
+          <p>
+            Amazing hotel with amazing staff. There was no aspect of my stay that wasn't exceptional.
+            The facilities are immaculate with plenty to keep you occupied - whether you want to unwind by the beautiful pool, relax at the spa or even explore the turtle rehab centre. The hotel's location makes most things very walkable but, if you're not up to it, there is a complementary shuttle service to get you to the city centre and back. They will also provide transfers to/from the airport or train station.
+            The courtyard suite (which I was upgraded to) was large, extremely comfortable, and clean. Everything felt state of the art. The staff was always very attentive and responsive. They're able to arrange excursions or point you in the direction you need to go.
+            Food at the restaurant was great as well, and service at the spa was excellent.
+            <br><b>Rooms</b> 5.0 <b>Service</b> 5.0 <b>Location</b> 5.0
+            <br><b>Hotel highlights</b> Luxury · Romantic · Great value
+            <br><b>Rooms</b> Large and comfortable with everything one needs
+            <br><b>Nearby activities</b> City centre is closeby
+            <br><b>Walkability</b> 10 min walk to many things, shuttle is available
+            <br><b>Food and drinks</b> very good food at the restaurant
+            <br><b>Noteworthy details</b> shuttle service is free, many souvenirs are sold on site.
+
+
+            
+          </p>
+          <div class="author">
+            <img src="https://static.wixstatic.com/media/a14c8a_c4deb0b021904bc0a176770da4c71900~mv2.png" alt="avatar">
+            <div>
+              <div class="author-name">Brooke England</div>
+              <div class="author-title"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- เพิ่มอีกตามต้องการ -->
+      </div>
+    </div>
+  </section>
+
+  <script>
+    let currentIndex = 0;
+    let slides;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      slides = document.querySelectorAll(".slide");
+
+      slides.forEach(slide => {
+        slide.addEventListener("click", () => {
+          const url = slide.getAttribute("data-url");
+          if (url) window.open(url, "_blank");
+        });
+      });
+    });
+
+    function scrollSlider(direction) {
+      if (!slides) return;
+
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = slides.length - 1;
+      if (currentIndex >= slides.length) currentIndex = 0;
+
+      slides[currentIndex].scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest"
+      });
+    }
+  </script>
+
+
+
+
+</body>
+
+</html>
