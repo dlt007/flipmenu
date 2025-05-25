@@ -1697,3 +1697,14 @@ body.df-lightbox-open {
   
   }
   
+
+  @media (max-width: 415px) {
+    .df-ui-btn {
+        font-size: 12px;
+        width: 23px;
+        height: 30px;
+    }
+    .df-ui-controls {
+        height: 30px;
+    }
+}
